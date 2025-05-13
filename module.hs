@@ -20,7 +20,7 @@ where
  
    
     instance (Show a) => Show (Stack a) where
-                        show = showStack -- die show-Funktion der bekannten Datentypen wird ueberschrieben
+                        show = showStack -- Show
  
     showStack Empty   = " "
     showStack (S a b) = show a ++ " " ++ showStack b
