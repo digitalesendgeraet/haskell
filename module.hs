@@ -1,29 +1,31 @@
-module Stack (new, )
- 
+module Stack (new, isEmpty, push, pop, top)
  
 where
-   
-    data Stack a = Empty | K a (Stack a)
+    data Stack a = Empty | S a (Stack a) -- Konstruktor S
  
-    new :: Stack a
-    top :: Stack a => a
-
  
     new = Empty
-    top (K a b) = a 
  
+    isEmpty Empty = True
+    isEmpty _ = False
  
+    push Empty el = (S el new)
+    push stack el = (S el stack)
  
+    pop Empty = error "Empty"
+    pop (S a b) = b
+ 
+    top Empty = error "Empty"
+    top (S a b) = a
+ 
+   
     instance (Show a) => Show (Stack a) where
-                        show = showStack
+                        show = showStack -- die show-Funktion der bekannten Datentypen wird ueberschrieben
  
     showStack Empty   = " "
-    showStack (K a b) = show a ++ " " ++ showStack b    
-                                                       
+    showStack (S a b) = show a ++ " " ++ showStack b
  
+    --Testumgeung
  
- 
-    --Testumgebung
-    stack1 = K 4 (K 3 (K 2 (K 1 new)))
-    stack2 = K 'a' (K 'b' (K 'c' (K 'd' new)))
- 
+    stack1 = S 4 (S 3 (S 2 (S 1 new)))
+    stack2 = S 4 (S 3 (S 2 (S 1 new)))
