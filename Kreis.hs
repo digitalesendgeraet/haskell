@@ -6,4 +6,4 @@ module Kreis where
         show = showKreis
 
     showKreis (Kreis a b) = (showPunkt a ++ ", " ++ show b)
-    -- Komentar
+    --
