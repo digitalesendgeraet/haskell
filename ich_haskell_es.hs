@@ -37,15 +37,9 @@ remove x (K a b)
     | a == x = remove x b
     | otherwise = K a (remove x b)
 
-cardinality Empty Empty = True
-carindality Empty (K c d) = False
-cardinality (K a b) Empty = False
-cardinality (K a b) (K c d)
-    | isIn a (K c d) == True = cardinality b (remove a (K c d))
-    | otherwise = False
-
 --Testmengen
 m1= K 3 Empty 
 m2 = K 7 (K 9 (K 4 m1))
 m3 = K 5 (K 9 m2) -- ist keine Menge, denn der Konstruktor prueft nicht, ob das Element schon vorhanden
+
 
